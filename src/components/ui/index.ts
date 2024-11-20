@@ -14,3 +14,5 @@ export * from "./switch";
 export * from "./tabs";
 export * from "./tooltip";
 export * from "./theme-toggle";
+export * from "./separator";
+export * from "./skeleton";

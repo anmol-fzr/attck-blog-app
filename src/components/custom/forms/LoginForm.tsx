@@ -1,5 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { FormHeader } from "@/components";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "@/schema";
@@ -18,13 +19,16 @@ const updateCreds = useAuthStore.getState().updateCreds;
 const id = "login_form";
 
 export function LoginForm() {
+  const router = useRouter();
+
   const { mutate, isPending } = useMutation({
     mutationFn: API.AUTH.LOGIN,
 
     onSuccess(res) {
       const { token, email } = res.data;
-      updateCreds({ token, email });
+      updateCreds({ token, email, isLogin: true });
       toast.success(res.message, { id });
+      router.push("/dashboard");
     },
     onError(err) {
       toast.error(err.message, { id });

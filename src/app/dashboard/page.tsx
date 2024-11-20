@@ -1,7 +1,25 @@
-export default function Page(){
+import { BlogCard, LoadingBlogCard, LoginProtected } from "@/components";
+
+const blogs = Array.from(new Array(1));
+
+export default function Page() {
   return (
-    <div>
-      A private route where logged-in users can post new articles and view their own posts.
-    </div>
-  )
+    <LoginProtected>
+      <main className="p-8">
+        <h1>My Blogs</h1>
+        {/*
+        <div>{blogs.length > 0 ? <>render blogs</> : <></>}</div>
+        p*/}
+
+        <div className="flex flex-col gap-4">
+          {blogs.map((_, i) => (
+            <LoadingBlogCard key={i} />
+          ))}
+          {blogs.map((_, i) => (
+            <BlogCard key={i} />
+          ))}
+        </div>
+      </main>
+    </LoginProtected>
+  );
 }

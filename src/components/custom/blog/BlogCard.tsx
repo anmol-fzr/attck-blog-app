@@ -1,17 +1,15 @@
-import { Card, CardContent, CardFooter } from "@/components";
+import { Button, CardContent, Separator } from "@/components";
 import Link from "next/link";
 import { MoveUpRight } from "lucide-react";
 
-//interface BlogCardProps = {
-//  title: string;
-//  desc: string;
-//}
-
 export function BlogCard() {
   return (
-    <Card className="transition-all duration-500 pt-4 relative group">
-      <MoveUpRight className="absolute top-0 right-0 -translate-x-12 translate-y-12 group-hover:translate-y-4 group-hover:-translate-x-4 opacity-0 group-hover:opacity-100 transition-all" />
-      <div className="flex flex-col h-full">
+    <>
+      <div className="transition-all pt-6 duration-500 relative group">
+        <Button className="flex gap-2 absolute top-0 right-0 -translate-x-12 translate-y-12 group-hover:translate-y-4 group-hover:-translate-x-4 opacity-0 group-hover:opacity-100 transition-all">
+          <span className="font-medium">Read now</span>
+          <MoveUpRight />
+        </Button>
         <CardContent className="flex-1">
           <Link href="#" className="space-y-2" prefetch={false}>
             <div className="space-y-2">
@@ -29,16 +27,8 @@ export function BlogCard() {
             </p>
           </Link>
         </CardContent>
-        <CardFooter>
-          <Link
-            href="#"
-            className="text-sm font-medium inline-flex items-center space-x-1.5 group-hover:bg-secondary p-3 rounded-lg"
-            prefetch={false}
-          >
-            Continue reading
-          </Link>
-        </CardFooter>
+        <Separator className="-mt-2" />
       </div>
-    </Card>
+    </>
   );
 }
