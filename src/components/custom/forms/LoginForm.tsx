@@ -25,7 +25,7 @@ export function LoginForm() {
     mutationFn: API.AUTH.LOGIN,
 
     onSuccess(res) {
-      const { token, email } = res.data;
+      const { token, email, userId } = res.data;
       updateCreds({ token, email, isLogin: true });
       toast.success(res.message, { id });
       router.push("/dashboard");

@@ -1,6 +1,10 @@
 import { IRes } from ".";
 
-type IResLoginData = { email: string; token: string };
+type IResLoginData = {
+  email: string;
+  token: string;
+  userId: string;
+};
 
 type IResLogin = IRes<IResLoginData>;
 type IResSignup = IRes<null>;

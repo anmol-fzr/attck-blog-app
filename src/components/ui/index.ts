@@ -16,3 +16,5 @@ export * from "./tooltip";
 export * from "./theme-toggle";
 export * from "./separator";
 export * from "./skeleton";
+export * from "./textarea";
+export * from "./toggle";

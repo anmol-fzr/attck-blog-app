@@ -1,25 +1,26 @@
-import { BlogCard, LoadingBlogCard, LoginProtected } from "@/components";
+import {
+  LoadingPostList,
+  MyPostList,
+  LoginProtected,
+  Link,
+  PageHeader,
+} from "@/components";
+import { Suspense } from "react";
 
-const blogs = Array.from(new Array(1));
-
-export default function Page() {
+export default async function Page() {
   return (
-    <LoginProtected>
-      <main className="p-8">
-        <h1>My Blogs</h1>
-        {/*
-        <div>{blogs.length > 0 ? <>render blogs</> : <></>}</div>
-        p*/}
-
-        <div className="flex flex-col gap-4">
-          {blogs.map((_, i) => (
-            <LoadingBlogCard key={i} />
-          ))}
-          {blogs.map((_, i) => (
-            <BlogCard key={i} />
-          ))}
-        </div>
-      </main>
-    </LoginProtected>
+    <>
+      <div className="flex items-start justify-between">
+        <PageHeader title="My Blogs" desc="See all your published posts here" />
+        <Link href="/dashboard/new" variant="default">
+          Add New Post
+        </Link>
+      </div>
+      <div className="flex flex-col gap-4">
+        <Suspense fallback={<LoadingPostList />}>
+          <MyPostList />
+        </Suspense>
+      </div>
+    </>
   );
 }

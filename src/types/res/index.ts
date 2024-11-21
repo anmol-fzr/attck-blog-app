@@ -6,3 +6,4 @@ type IRes<Data = unknown> = {
 export type { IRes };
 
 export * from "./auth";
+export * from "./post";

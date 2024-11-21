@@ -1,8 +1,9 @@
 import { buttonVariants } from "../ui";
-import { default as RawLink, LinkProps as RawLinkProps } from "next/link";
+import { LinkProps as RawLinkProps } from "next/link";
 import { type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { Link as RawLink } from "next-view-transitions";
 
 export interface LinkProps
   extends RawLinkProps,

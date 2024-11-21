@@ -17,7 +17,9 @@ const axiosInst = axios.create({
 });
 
 axiosInst.interceptors.request.use((config) => {
-  const token = useAuthStore.getState().creds.token;
+  //const token = useAuthStore.getState().creds.token;
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzNlMGM2OWU1NmUzYTNkMmIxNDg3ZTMiLCJlbWFpbCI6ImFpbnNhMjI3OUBnbWFpbC5jb20iLCJpYXQiOjE3MzIxMTk3NDB9.gElRdZzKa-dXq8pdhzzt1Yo9LZO79ha-WYs_VLlQtz8";
   if (token) {
     config.headers["Authorization"] = `Token ${token}`;
   }

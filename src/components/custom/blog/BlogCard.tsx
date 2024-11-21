@@ -1,8 +1,19 @@
 import { Button, CardContent, Separator } from "@/components";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { MoveUpRight } from "lucide-react";
 
-export function BlogCard() {
+interface BlogCardProps {
+  slug: string;
+  title: string;
+  desc: string;
+  postedAt: string;
+}
+
+const fmt = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+});
+
+export function BlogCard({ slug, title, desc, postedAt }: BlogCardProps) {
   return (
     <>
       <div className="transition-all pt-6 duration-500 relative group">
@@ -10,23 +21,37 @@ export function BlogCard() {
           <span className="font-medium">Read now</span>
           <MoveUpRight />
         </Button>
-        <CardContent className="flex-1">
-          <Link href="#" className="space-y-2" prefetch={false}>
+        <div className="flex-1 w-full pb-6">
+          <Link href={`/post/${slug}`} className="space-y-2" prefetch={false}>
             <div className="space-y-2">
-              <h3 className="text-2xl font-bold">
-                Taxing Laughter: The Joke Tax Chronicles
+              <h3
+                style={{
+                  viewTransitionName: `post_image_${slug}`,
+                }}
+                className="text-2xl font-bold"
+              >
+                {title}
               </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Posted on August 24, 2023
+              <p
+                style={{
+                  viewTransitionName: `post_date_${slug}`,
+                }}
+                className="text-gray-500 dark:text-gray-400"
+              >
+                Posted on {fmt.format(new Date(postedAt))}
               </p>
             </div>
-            <p className="line-clamp-3">
-              Once upon a time, in a far-off land, there was a very lazy king
-              who spent all day lounging on his throne. One day, his advisors
-              came to him with a problem: the kingdom was running out of money.
+            <p
+              style={{
+                viewTransitionName: `post_content_${slug}`,
+              }}
+              className="line-clamp-3"
+            >
+              {" "}
+              {desc}{" "}
             </p>
           </Link>
-        </CardContent>
+        </div>
         <Separator className="-mt-2" />
       </div>
     </>
